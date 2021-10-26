@@ -57,7 +57,7 @@ btnScrollTo.addEventListener('click', function(e) {
 })
 
 ///////////////////////////////////////
-//Event Delegation
+//Nav scroll with Event Delegation
 //smooth scroll on the page navigation using event delegation
 // 1.add event listener to the parent element
 // 2.determine what element originated the event
@@ -72,3 +72,26 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
   }
 });
 
+///////////////////////////////////////
+//Tab component with DOM Traversing/event delegation
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function(e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  //guard clause
+  if(!clicked) return;
+
+  //Remove active classes
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(content => content.classList.remove('operations__content--active'));
+
+  //Activated tab
+  clicked.classList.add('operations__tab--active');
+
+  //Activated content
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+});

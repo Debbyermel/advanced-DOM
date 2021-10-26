@@ -90,3 +90,32 @@ document.querySelectorAll('.nav__link').forEach(function(el) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+///////////////////////////////////////
+//DOM Traversing
+const h1 = document.querySelector('h1');
+
+//going down: children
+h1.querySelectorAll('.highlighted');
+
+//Direct children
+h1.children
+h1.firstElementChild.style.color = 'red';
+h1.lastElementChild.style.color = 'green';
+
+//going up: direct parent
+h1.parentNode;
+h1.parentElement;
+h1.closest('.header').style.background = 'var(--gradient-primary)';
+
+//going sideways: selecting siblings
+h1.previousElementSibling;
+h1.nextElementSibling;
+
+//selecting all siblings
+h1.parentElement.children;
+[...h1.parentElement.children].forEach(function(el) {
+  if(el !== h1) {
+    el.style.transform = 'scale(0.6)';
+  }
+})
