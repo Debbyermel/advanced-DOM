@@ -38,4 +38,62 @@ message.innerHTML = `
 header.append(message);
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
   message.remove();
+});
+
+message.style.backgroundColor = '#37383d';
+
+//Inspecting de height
+console.log(getComputedStyle(message).height);
+
+//Inspecting de url wrote on html
+console.log(logo.getAttribute('src'));
+
+//Inspecting the url absolute
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+
+// Data attributes
+console.log(logo.dataset.versionNumber);
+
+// Changing the value of a CSS variable
+document.documentElement.style.setProperty('--color-primary', 'yellowgreen' );
+
+//Class add/remove/toggle
+logo.classList.add('disable', 'with-opacity');
+logo.classList.contains('disable');
+logo.classList.toggle('visible');
+
+
+///////////////////////////////////////
+// Smooth scroll
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+//Smooth scroll modern browsers
+btnScrollTo.addEventListener('click', function(e) {
+  section1.scrollIntoView({ behavior: 'smooth' });
 })
+
+
+//Smooth scroll (old way)
+//btnScrollTo.addEventListener('click', function(e) {
+  // const s1coords = section1.getBoundingClientRect();
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top:  s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  //Checking current scroll
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  //Checking wight and height
+  // console.log(
+  //   'height and width viewport',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+//})
+
