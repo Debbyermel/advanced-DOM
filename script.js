@@ -42,31 +42,12 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
 
 message.style.backgroundColor = '#37383d';
 
-//Inspecting de height
-console.log(getComputedStyle(message).height);
-
-//Inspecting de url wrote on html
-console.log(logo.getAttribute('src'));
-
-//Inspecting the url absolute
-const link = document.querySelector('.nav__link--btn');
-console.log(link.href);
-
-// Data attributes
-console.log(logo.dataset.versionNumber);
-
 // Changing the value of a CSS variable
 document.documentElement.style.setProperty('--color-primary', 'yellowgreen' );
 
-//Class add/remove/toggle
-logo.classList.add('disable', 'with-opacity');
-logo.classList.contains('disable');
-logo.classList.toggle('visible');
-
 
 ///////////////////////////////////////
-// Smooth scroll
-
+// Button Smooth scroll
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
@@ -75,25 +56,19 @@ btnScrollTo.addEventListener('click', function(e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 })
 
-
-//Smooth scroll (old way)
-//btnScrollTo.addEventListener('click', function(e) {
-  // const s1coords = section1.getBoundingClientRect();
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top:  s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
-
-  //Checking current scroll
-  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
-
-  //Checking wight and height
-  // console.log(
-  //   'height and width viewport',
-  //   document.documentElement.clientHeight,
-  //   document.documentElement.clientWidth
-  // );
-//})
+///////////////////////////////////////
+//Event Delegation
+//smooth scroll on the page navigation using event delegation
+// 1.add event listener to the parent element
+// 2.determine what element originated the event
+// 3.Match strategy (ignore clicks that is not the target)
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  console.log(e.target);
+  if(e.target.classList.contains('nav__link')) {
+    console.log('link');
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
 
