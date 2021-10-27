@@ -266,6 +266,7 @@ h4 {
 /* OPERATIONS */
 .operations {
   background-color: var(--color-white);
+  border-radius: 5px;
   margin: 12rem auto 0 auto;
   max-width: 100rem;
 }
@@ -578,7 +579,7 @@ h4 {
   background-color: #f3f3f3;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   left: 50%;
-  max-width: 60rem;
+  max-width: 100%;
   padding: 5rem 6rem;
   position: fixed;
   top: 50%;

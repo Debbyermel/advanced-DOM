@@ -1,13 +1,15 @@
 'use strict';
+///////////////////////////////////////
+// Global variables
+const header = document.querySelector('.header');
+const nav = document.querySelector('.nav')
 
 ///////////////////////////////////////
 // Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-const header = document.querySelector('.header');
 
 const openModal = function (evt) {
   evt.preventDefault();
@@ -65,7 +67,6 @@ btnScrollTo.addEventListener('click', function(e) {
 document.querySelector('.nav__links').addEventListener('click', function(e) {
   console.log(e.target);
   if(e.target.classList.contains('nav__link')) {
-    console.log('link');
     e.preventDefault();
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
@@ -74,7 +75,6 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 
 ///////////////////////////////////////
 //Tab component with DOM Traversing/event delegation
-
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
@@ -95,3 +95,23 @@ tabsContainer.addEventListener('click', function(e) {
   //Activated content
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 });
+
+///////////////////////////////////////
+//Menu fade animation with event delegation
+
+function handleHover(e) {
+  if(e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblingsLink = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblingsLink.forEach(el => {
+      if(el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+//Passing an "argument" into handler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
