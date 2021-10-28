@@ -111,7 +111,30 @@ function handleHover(e) {
     logo.style.opacity = this;
   }
 };
-
 //Passing an "argument" into handler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+///////////////////////////////////////
+//Building a sticky nav-bar using the Intersection observer API
+//Observes changes to the way a target element intersects an element
+const navHeight = nav.getBoundingClientRect().height;
+
+function stickyNav(entries) {
+  const [entry] = entries;
+
+  if(!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  }
+  else {
+    nav.classList.remove('sticky');
+  }
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
