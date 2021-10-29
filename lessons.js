@@ -150,3 +150,25 @@ const observerOptions = {
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 observer.observe(elementToObserve);
+
+/////////////////////////////////////////
+//DOM Lifecycle
+
+//DOMContentLoaded is fired as soon the HTML is completed parsed
+// It not wait to image or external files be loaded, just HTML and JS
+// We can specify code that should run only after the dom is fully loaded
+
+document.addEventListener('DOMContentLoaded', function(e) {})
+document.ready
+
+//Load is fired as soon the HTML is parsed and images/CSS and eternal resource
+window.addEventListener('load', function(e){})
+
+//Beforeunload is fired immediately before a user is about to leave a page (Like closing the tab)
+// Some browsers will need the e.preventDefault();
+// To display a confirmation we need a returnValue signed a empty string
+
+window.addEventListener('beforeunload', function(e){
+  e.preventDefault();
+  e.returnValue = '';
+})
