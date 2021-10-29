@@ -136,6 +136,7 @@ window.addEventListener('scroll', function() {
 
 /////////////////////////////////////////
 //// Intersection Observer API
+//Observes changes to the way a target element intersects an element
 const observerCallback = function(entries, observer) {
   entries.forEach(entry => {
     console.log(entry);
